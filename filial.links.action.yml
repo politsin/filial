@@ -1,0 +1,5 @@
+entity.filial.add_form:
+  route_name: entity.filial.add_form
+  title: 'Add Filial'
+  appears_on:
+    - entity.filial.collection

@@ -1,0 +1,23 @@
+uuid: 8f374a8c-2122-4a4e-8f2e-e43730e87c47
+langcode: ru
+status: true
+dependencies:
+  config:
+    - field.storage.filial.field_filial_tariff
+  module:
+    - filial
+    - options
+id: filial.filial.field_filial_tariff
+field_name: field_filial_tariff
+entity_type: filial
+bundle: filial
+label: Тариф
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: trial
+default_value_callback: ''
+settings: {  }
+field_type: list_string

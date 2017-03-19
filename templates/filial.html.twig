@@ -1,0 +1,22 @@
+{#
+/**
+ * @file filial.html.twig
+ * Default theme implementation to present Filial data.
+ *
+ * This template is used when viewing Filial pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_filial()
+ *
+ * @ingroup themeable
+ */
+#}
+<div{{ attributes.addClass('filial') }}>
+  {% if content %}
+    {{- content -}}
+  {% endif %}
+</div>

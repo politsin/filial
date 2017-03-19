@@ -1,0 +1,29 @@
+uuid: 6a3789cb-d6ba-4446-84f6-8de388f7986b
+langcode: ru
+status: true
+dependencies:
+  config:
+    - field.storage.filial.field_filial_team
+  module:
+    - filial
+id: filial.filial.field_filial_team
+field_name: field_filial_team
+entity_type: filial
+bundle: filial
+label: Команда
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: _none
+    target_bundles: null
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference

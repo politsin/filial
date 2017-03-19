@@ -1,0 +1,22 @@
+add filial entities:
+  title: 'Create new Filial entities'
+
+administer filial entities:
+  title: 'Administer Filial entities'
+  description: 'Allow to access the administration form to configure Filial entities.'
+  restrict access: true
+
+delete filial entities:
+  title: 'Delete Filial entities'
+
+edit filial entities:
+  title: 'Edit Filial entities'
+
+access filial overview:
+  title: 'Access the Filial overview page'
+
+view published filial entities:
+  title: 'View published Filial entities'
+
+view unpublished filial entities:
+  title: 'View unpublished Filial entities'

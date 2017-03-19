@@ -1,0 +1,23 @@
+uuid: 010b3627-1fac-405a-867f-308d6d53ff1a
+langcode: ru
+status: true
+dependencies:
+  config:
+    - field.storage.filial.field_filial_status
+  module:
+    - filial
+    - options
+id: filial.filial.field_filial_status
+field_name: field_filial_status
+entity_type: filial
+bundle: filial
+label: Статус
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: demo
+default_value_callback: ''
+settings: {  }
+field_type: list_string

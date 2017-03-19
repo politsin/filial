@@ -1,0 +1,54 @@
+uuid: 4be67289-9724-495e-b8b7-b6f13191c70c
+langcode: ru
+status: true
+dependencies:
+  config:
+    - field.field.filial.filial.field_filial_name
+    - field.field.filial.filial.field_filial_owner
+    - field.field.filial.filial.field_filial_status
+    - field.field.filial.filial.field_filial_tariff
+    - field.field.filial.filial.field_filial_team
+  module:
+    - filial
+id: filial.filial.default
+targetEntityType: filial
+bundle: filial
+mode: default
+content:
+  field_filial_name:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_filial_owner:
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  field_filial_status:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_filial_tariff:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_filial_team:
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+hidden:
+  langcode: true
+  name: true
+  user_id: true

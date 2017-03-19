@@ -1,0 +1,20 @@
+uuid: efdaad14-fe77-4b1c-a422-3f9bdbd7f28d
+langcode: ru
+status: true
+dependencies:
+  module:
+    - filial
+    - user
+id: filial.field_filial_owner
+field_name: field_filial_owner
+entity_type: filial
+type: entity_reference
+settings:
+  target_type: user
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

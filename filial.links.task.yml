@@ -1,0 +1,22 @@
+# Filial routing definition
+filial.settings_tab:
+  route_name: filial.settings
+  title: 'Settings'
+  base_route: filial.settings
+
+entity.filial.canonical:
+  route_name: entity.filial.canonical
+  base_route: entity.filial.canonical
+  title: 'View'
+
+entity.filial.edit_form:
+  route_name: entity.filial.edit_form
+  base_route: entity.filial.canonical
+  title: 'Edit'
+
+entity.filial.delete_form:
+  route_name:  entity.filial.delete_form
+  base_route:  entity.filial.canonical
+  title: Delete
+  weight: 10
+

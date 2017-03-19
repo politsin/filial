@@ -1,0 +1,14 @@
+
+# Filial menu items definition
+entity.filial.collection:
+  title: 'Filial list'
+  route_name: entity.filial.collection
+  description: 'List Filial entities'
+  parent: system.admin_structure
+  weight: 100
+
+filial.admin.structure.settings:
+  title: Filial settings
+  description: 'Configure Filial entities'
+  route_name: filial.settings
+  parent: entity.filial.collection

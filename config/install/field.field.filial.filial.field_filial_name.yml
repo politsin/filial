@@ -1,0 +1,20 @@
+uuid: 00c41d7f-41af-492f-a94d-d27aa03f968f
+langcode: ru
+status: true
+dependencies:
+  config:
+    - field.storage.filial.field_filial_name
+  module:
+    - filial
+id: filial.filial.field_filial_name
+field_name: field_filial_name
+entity_type: filial
+bundle: filial
+label: 'Название филиала'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

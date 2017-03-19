@@ -1,0 +1,8 @@
+
+filial.page_hello:
+  path: '/filial/hello/{name}'
+  defaults:
+    _controller: '\Drupal\filial\Controller\Page::hello'
+    _title: 'main'
+  requirements:
+    _permission: 'access content'

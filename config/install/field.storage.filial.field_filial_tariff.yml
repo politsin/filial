@@ -1,0 +1,36 @@
+uuid: 0f5220fc-904b-4e9f-bdd0-b5bc70b33ae8
+langcode: ru
+status: true
+dependencies:
+  module:
+    - filial
+    - options
+id: filial.field_filial_tariff
+field_name: field_filial_tariff
+entity_type: filial
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: free
+      label: Free
+    -
+      value: trial
+      label: Trial
+    -
+      value: demo
+      label: Demo
+    -
+      value: base
+      label: Base
+    -
+      value: business
+      label: Business
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
