@@ -1,0 +1,5 @@
+services:
+  access_check.filial_content:
+    class: Drupal\filial\Access\FilialContentAccessCheck
+    tags:
+      - { name: access_check, applies_to: _content_access_node_page_access }
