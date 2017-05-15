@@ -19,4 +19,3 @@ entity.filial.delete_form:
   base_route:  entity.filial.canonical
   title: Delete
   weight: 10
-

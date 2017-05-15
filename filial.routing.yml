@@ -6,3 +6,11 @@ filial.page_hello:
     _title: 'main'
   requirements:
     _permission: 'access content'
+
+filial.nodetypes:
+  path: '/admin/structure/filial/settings/nodetypes'
+  defaults:
+    _form: '\Drupal\filial\Form\FilialSettingsController'
+    _title: 'Synajax configuration'
+  requirements:
+    _permission: 'administer content'

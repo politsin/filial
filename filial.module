@@ -7,56 +7,60 @@
 
 use Drupal\Core\Access\AccessResult;
 use Drupal\node\NodeInterface;
+use Drupal\filial\Controller\NodeGrantsSet;
+use Drupal\filial\Controller\NodeGrantsView;
 
 /**
  * Implements node_view_permissions_node_access().
+ *
+ * Решает можно ли показать ноду.
  */
 function filial_node_access(NodeInterface $node, $op, $account) {
+  /*
   $type = $node->bundle();
-  if (FALSE) {
+  $neutral = AccessResult::neutral('Можн');
+  $forbidden = AccessResult::forbidden('Низя');
+  $allowed = AccessResult::allowed()->cachePerUser();
+
+  if ($type == 'calc') {
     switch ($op) {
-      case 'create':
       case 'create':
       case 'update':
       case 'delete':
-        return AccessResult::neutral();
+        return $neutral;
 
       default:
-        return AccessResult::forbidden();
+        // dsm($allowed);
+        return $neutral;
     }
-  }
+  }*/
+  return AccessResult::neutral();
 }
 
 /**
  * Implements hook_node_access_records().
+ *
+ * Установка пермишенов при сохранении ноды.
  */
 function filial_node_access_records(NodeInterface $node) {
   $grants = [];
-  if ($node->isPublished() && $node->getType() == 'otziv') {
-    $grant = [
-      'realm' => 'filial',
-      'gid' => 1,
-      'grant_view' => 1,
-      'grant_update' => 1,
-      'grant_delete' => 0,
-      'priority' => 0,
-    ];
-    $grants[] = $grant;
-    dsm('filial_node_access_records');
+  $type = $node->getType();
+  if (\Drupal::config('filial.nodesettings')->get('node_' . $type)) {
+    NodeGrantsSet::set($grants, $node);
   }
-
   return $grants;
 }
 
 /**
  * Implements hook_node_grants().
+ *
+ * Какие пары realm/grant (filial/gid) может просматривать пользователь
+ * при доступе к вьюхе.
  */
 function filial_node_grants($account, $op) {
   $grants = [];
-  dsm($op);
   if ($op == 'view') {
-    $grants['filial'][] = 1;
+    NodeGrantsView::view($grants, $account);
   }
-
   return $grants;
 }

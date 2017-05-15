@@ -12,3 +12,9 @@ filial.admin.structure.settings:
   description: 'Configure Filial entities'
   route_name: filial.settings
   parent: entity.filial.collection
+
+filial.nodetypes:
+  title: Filial Node Types
+  description: 'Configure Filial entities'
+  route_name: filial.nodetypes
+  parent: entity.filial.collection
