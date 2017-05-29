@@ -11,6 +11,31 @@ use Drupal\filial\Controller\NodeGrantsSet;
 use Drupal\filial\Controller\NodeGrantsView;
 
 /**
+ * Implements hook_node_access_records().
+ *
+ * Установка пермишенов при сохранении ноды.
+ */
+function filial_node_access_records(NodeInterface $node) {
+  $grants = NodeGrantsSet::init($grants, $node);
+  return $grants;
+}
+
+/**
+ * Implements hook_node_grants().
+ *
+ * Какие пары realm/grant (filial/gid) может просматривать пользователь
+ * при доступе к вьюхе.
+ */
+function filial_node_grants($account, $op) {
+  $grants = [];
+  if ($op == 'view') {
+    NodeGrantsView::view($grants, $account);
+  }
+  return $grants;
+}
+
+
+/**
  * Implements node_view_permissions_node_access().
  *
  * Решает можно ли показать ноду.
@@ -35,28 +60,4 @@ function filial_node_access(NodeInterface $node, $op, $account) {
     }
   }*/
   return AccessResult::neutral();
-}
-
-/**
- * Implements hook_node_access_records().
- *
- * Установка пермишенов при сохранении ноды.
- */
-function filial_node_access_records(NodeInterface $node) {
-  $grants = NodeGrantsSet::init($grants, $node);
-  return $grants;
-}
-
-/**
- * Implements hook_node_grants().
- *
- * Какие пары realm/grant (filial/gid) может просматривать пользователь
- * при доступе к вьюхе.
- */
-function filial_node_grants($account, $op) {
-  $grants = [];
-  if ($op == 'view') {
-    NodeGrantsView::view($grants, $account);
-  }
-  return $grants;
 }

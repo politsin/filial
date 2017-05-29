@@ -46,7 +46,6 @@ class NodeGrantsSet extends ControllerBase {
       ];
       $grants[] = $grant;
     }
-
     return $grants;
   }
 
@@ -58,7 +57,7 @@ class NodeGrantsSet extends ControllerBase {
     if (!empty($clients)) {
       foreach ($clients as $key => $user) {
         $uid = $user->entity->id();
-        if ($id) {
+        if ($uid) {
           $grant = [
             'realm' => 'client',
             'gid' => $uid,

@@ -21,13 +21,14 @@ class NodeGrantsView extends ControllerBase {
     $uid = \Drupal::currentUser()->id();
     $ids = NodeGrantsSet::queryList($uid);
     $grants = [];
-    $grants['filial'][] = 0;
+    //$grants['filial'][] = 1;
+    $grants['client'][] = (int) $uid;
     if (!empty($ids)) {
       foreach ($ids as $id) {
         $grants['filial'][] = (int) $id;
       }
     }
-    dsm($grants);
+    drupal_set_message(print_r($grants, TRUE));
 
     return $grants;
   }
