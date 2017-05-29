@@ -12,27 +12,65 @@ use Drupal\Core\Controller\ControllerBase;
 class NodeGrantsSet extends ControllerBase {
 
   /**
-   * Hello.
-   *
-   * @return string
-   *   Return Hello string.
+   * Inti.
    */
-  public static function set(&$grants, $node) {
-    $uid = $node->uid->entity->id();
+  public static function init(&$grants, $node) {
     $grants = [];
+    $type = $node->getType();
+    $config = \Drupal::config('filial.nodesettings');
+    if ($config->get('node_' . $type)) {
+      if ($config->get('filial')) {
+        self::filial($grants, $node);
+      }
+      if ($config->get('client')) {
+        self::client($grants, $node);
+      }
+    }
+    return $grants;
+  }
+
+  /**
+   * Filial grants.
+   */
+  public static function filial(&$grants, $node) {
+    $uid = $node->uid->entity->id();
     $filial = self::getFilial($uid);
     if ($filial) {
       $grant = [
         'realm' => 'filial',
         'gid' => $filial,
         'grant_view' => 1,
-        'grant_update' => 0,
+        'grant_update' => 1,
         'grant_delete' => 0,
         'priority' => 0,
       ];
       $grants[] = $grant;
     }
 
+    return $grants;
+  }
+
+  /**
+   * Client grants.
+   */
+  public static function client(&$grants, $node) {
+    $clients = $node->field_client;
+    if (!empty($clients)) {
+      foreach ($clients as $key => $user) {
+        $uid = $user->entity->id();
+        if ($id) {
+          $grant = [
+            'realm' => 'client',
+            'gid' => $uid,
+            'grant_view' => 1,
+            'grant_update' => 0,
+            'grant_delete' => 0,
+            'priority' => 1,
+          ];
+          $grants[] = $grant;
+        }
+      }
+    }
     return $grants;
   }
 

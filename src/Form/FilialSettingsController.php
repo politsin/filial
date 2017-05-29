@@ -109,14 +109,26 @@ class FilialSettingsController extends ConfigFormBase {
       '#open' => TRUE,
     ];
 
-    $form["general"]['default-filial'] = array(
+    $form["general"]['default-filial'] = [
       '#title' => $this->t('Default filial id'),
       '#type' => 'number',
       '#min' => 0,
       '#step' => 1,
       '#size' => 15,
       '#default_value' => $config->get('default-filial'),
-    );
+    ];
+    $form["general"]['filial'] = [
+      '#title' => $this->t('Filial'),
+      '#description' => $this->t('Set Filial'),
+      '#type' => 'checkbox',
+      '#default_value' => $config->get('filial'),
+    ];
+    $form["general"]['client'] = [
+      '#title' => $this->t('Client'),
+      '#description' => $this->t('field_client'),
+      '#type' => 'checkbox',
+      '#default_value' => $config->get('client'),
+    ];
     // Node types for node forms.
     if ($this->moduleHandler->moduleExists('node')) {
       $types = NodeType::loadMultiple();
@@ -171,6 +183,8 @@ class FilialSettingsController extends ConfigFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $config = $this->config('filial.nodesettings');
     $config->set('default-filial', $form_state->getValue('default-filial'));
+    $config->set('filial', $form_state->getValue('filial'));
+    $config->set('client', $form_state->getValue('client'));
     foreach ($form_state->getValues() as $key => $value) {
       if (substr($key, 0, 16) == 'contact_message_') {
         $config->set($key, $value);

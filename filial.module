@@ -43,11 +43,7 @@ function filial_node_access(NodeInterface $node, $op, $account) {
  * Установка пермишенов при сохранении ноды.
  */
 function filial_node_access_records(NodeInterface $node) {
-  $grants = [];
-  $type = $node->getType();
-  if (\Drupal::config('filial.nodesettings')->get('node_' . $type)) {
-    NodeGrantsSet::set($grants, $node);
-  }
+  $grants = NodeGrantsSet::init($grants, $node);
   return $grants;
 }
 
