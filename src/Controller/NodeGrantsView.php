@@ -28,7 +28,7 @@ class NodeGrantsView extends ControllerBase {
         $grants['filial'][] = (int) $id;
       }
     }
-    drupal_set_message(print_r($grants, TRUE));
+    //drupal_set_message(print_r($grants, TRUE));
 
     return $grants;
   }
