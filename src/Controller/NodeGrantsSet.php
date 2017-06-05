@@ -3,6 +3,7 @@
 namespace Drupal\filial\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\user\Entity\User;
 
 /**
  * Class Page.
@@ -82,6 +83,13 @@ class NodeGrantsSet extends ControllerBase {
     if (!empty($ids)) {
       foreach ($ids as $id) {
         $filial = $id;
+      }
+    }
+    if (count($ids) > 1) {
+      $user = User::load($uid);
+      $try = $user->field_filial_current->entity->id();
+      if (in_array($try, $ids)) {
+        $filial = $try;
       }
     }
     return $filial;
