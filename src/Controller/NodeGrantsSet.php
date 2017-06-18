@@ -35,7 +35,7 @@ class NodeGrantsSet extends ControllerBase {
    */
   public static function filial(&$grants, $node) {
     $uid = $node->uid->entity->id();
-    $filial = self::getFilial($uid);
+    $filial = GetFilial::getByUid($uid);
     if ($filial) {
       $grant = [
         'realm' => 'filial',
@@ -75,24 +75,10 @@ class NodeGrantsSet extends ControllerBase {
   }
 
   /**
-   * Filials query by user.
+   * Deprecated.
    */
   public static function getFilial($uid) {
-    $ids = self::queryList($uid);
-    $filial = FALSE;
-    if (!empty($ids)) {
-      foreach ($ids as $id) {
-        $filial = $id;
-      }
-    }
-    if (count($ids) > 1) {
-      $user = User::load($uid);
-      $try = $user->field_filial_current->entity->id();
-      if (in_array($try, $ids)) {
-        $filial = $try;
-      }
-    }
-    return $filial;
+    return GetFilial::getByUid($uid);
   }
 
   /**
