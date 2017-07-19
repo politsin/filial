@@ -3,7 +3,6 @@ langcode: ru
 status: true
 dependencies:
   config:
-    - field.field.filial.filial.field_filial_name
     - field.field.filial.filial.field_filial_owner
     - field.field.filial.filial.field_filial_status
     - field.field.filial.filial.field_filial_tariff
@@ -15,32 +14,7 @@ targetEntityType: filial
 bundle: filial
 mode: default
 content:
-  field_filial_name:
-    weight: 0
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
   field_filial_owner:
-    weight: 1
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-  field_filial_status:
-    weight: 4
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-  field_filial_tariff:
-    weight: 3
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-  field_filial_team:
     weight: 2
     settings:
       match_operator: CONTAINS
@@ -48,7 +22,36 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
+  field_filial_status:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_filial_tariff:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_filial_team:
+    weight: 3
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
 hidden:
   langcode: true
-  name: true
   user_id: true

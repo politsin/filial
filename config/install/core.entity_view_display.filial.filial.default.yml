@@ -3,7 +3,6 @@ langcode: ru
 status: true
 dependencies:
   config:
-    - field.field.filial.filial.field_filial_name
     - field.field.filial.filial.field_filial_owner
     - field.field.filial.filial.field_filial_status
     - field.field.filial.filial.field_filial_tariff
@@ -16,13 +15,6 @@ targetEntityType: filial
 bundle: filial
 mode: default
 content:
-  field_filial_name:
-    weight: 0
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
   field_filial_owner:
     weight: 3
     label: above
@@ -30,18 +22,21 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_filial_status:
     weight: 2
     label: inline
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: content
   field_filial_tariff:
     weight: 1
     label: inline
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: content
   field_filial_team:
     weight: 4
     label: above
@@ -49,6 +44,7 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
 hidden:
   langcode: true
   name: true
