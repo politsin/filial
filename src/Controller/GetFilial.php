@@ -2,7 +2,6 @@
 
 namespace Drupal\filial\Controller;
 
-use Drupal\Core\Controller\ControllerBase;
 use Drupal\user\Entity\User;
 use Drupal\node\Entity\Node;
 
@@ -11,7 +10,7 @@ use Drupal\node\Entity\Node;
  *
  * @package Drupal\filial\Controller
  */
-class GetFilial extends ControllerBase {
+class GetFilial {
 
   /**
    * Load filial bt fid.
@@ -66,8 +65,9 @@ class GetFilial extends ControllerBase {
    * Filials query by user.
    */
   public static function queryList($uid) {
-    $query = \Drupal::entityQuery('filial');
-    $query->condition('field_filial_team', $uid);
+    $query = \Drupal::entityQuery('filial')
+      ->condition('field_filial_team', $uid)
+      ->range(0, 1);
     $ids = $query->execute();
     return $ids;
   }
